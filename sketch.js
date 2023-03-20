@@ -107,6 +107,10 @@ function windowResized() {
 	resizeCanvas(windowWidth, windowHeight);
 }
 
+function doubleClicked() {
+	window.location.href = 'eng.html';
+}
+
 // Draw game elements
 function draw() {
 	if (playOn && millis() - startTime < displayTime) {
