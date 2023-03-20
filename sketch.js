@@ -1,51 +1,53 @@
-let chnText = `你笑我什么都要
-为更美好的世界
-不负责任统治者
-为什么
-有没有美好世界
-在耳边讲废话
-我口中的如果
-呐喊成为常态
-大声说
-听见我们的声音
-我们的声音不断
-我们是你
-你也是我们
-无力否认
-气候变化
-冰川正在融化
-冰盖正在消融
-深深地吸温室气体
-生灵已经涂炭了
-远方的战火
-就在身边
-你我也在战火之间
-为政绩加分
-贫穷与不平等
+let chnText = `你笑我什麼都要
+為更美好的世界
+不負責任統治者
+為什麼
 不平等
-正在我的身边
-我要大声说
-在你的耳边大叫
-种族需要正义
-公平公平公平
-正义是良药
-治好你心里的病
-我是怎么想的
-我是这么想的
-大声的告诉你
-我就是这么想的
-想着如何发明
-拴住我的枷锁
 拴住我
-世界曾是单面的
-你我没有不同
-为更美好的生活`;
+大聲說
+有沒有美好世界
+我口中的如果
+吶喊成為常態
+聽見我們的聲音
+我們的聲音不斷
+我們是你
+你也是我們
+無力否認
+氣候變化
+冰川正在融化
+冰蓋正在消融
+生靈已經塗炭了
+貧窮與不平等
+深深地吸溫室氣體
+遠方的戰火
+你我也在戰火之間
+正在我的身邊
+我要大聲說
+在你的耳邊大叫
+種族需要正義
+公平公平公平
+正義是良藥
+治好你心裡的病
+在身邊
+拴住我的枷鎖
+我是怎麼想的
+我是這麼想的
+大聲的告訴你
+我就是這麼想的
+你我沒有不同
+我在你身邊
+公正公正公正
+世界曾是單面的
+為更美好的生活
+淚水在我臉頰`;
 let engText = '';
 
-let displayTime = 2000; // 5 seconds in milliseconds
+let displayTime = 1500; // 5 seconds in milliseconds
 let startTime;
 
 let chosenWord;
+
+let playOn = true;
 
 // Preload assets
 function preload() {
@@ -79,13 +81,15 @@ function setup() {
 			x = width / 2;
 			y = height / 2;
 		} else {
-			let lineNum = i % 7;
+			let lineNum = (i + 1) % 7;
 			x = width / 2;
-			y = (height / 10) * lineNum + height / 6;
+			y = (height / 10) * lineNum + height / 7;
 		}
 
 		if (chnText[i].length == 8) {
 			textSize(250);
+		} else if (chnText[i].length == 6) {
+			textSize(350);
 		} else {
 			textSize(300);
 		}
@@ -95,13 +99,17 @@ function setup() {
 	chosenWord = Math.floor(random(chnText.length));
 }
 
+function mousePressed() {
+	playOn = !playOn;
+}
+
 function windowResized() {
 	resizeCanvas(windowWidth, windowHeight);
 }
 
 // Draw game elements
 function draw() {
-	if (millis() - startTime < displayTime) {
+	if (playOn && millis() - startTime < displayTime) {
 		stroke(11, 9, 105, 60);
 		noFill();
 
@@ -110,13 +118,15 @@ function draw() {
 			x = width / 2;
 			y = height / 2;
 		} else {
-			let lineNum = chosenWord % 7;
+			let lineNum = (chosenWord + 1) % 7;
 			x = width / 2;
-			y = (height / 10) * lineNum + height / 6;
+			y = (height / 10) * lineNum + height / 7;
 		}
 
 		if (chnText[chosenWord].length == 8) {
 			textSize(250);
+		} else if (chnText[chosenWord].length == 6) {
+			textSize(350);
 		} else {
 			textSize(300);
 		}
@@ -131,13 +141,15 @@ function draw() {
 				x = width / 2;
 				y = height / 2;
 			} else {
-				let lineNum = i % 7;
+				let lineNum = (i + 1) % 7;
 				x = width / 2;
-				y = (height / 10) * lineNum + height / 6;
+				y = (height / 10) * lineNum + height / 7;
 			}
 
 			if (chnText[i].length == 8) {
 				textSize(250);
+			} else if (chnText[i].length == 6) {
+				textSize(350);
 			} else {
 				textSize(300);
 			}
